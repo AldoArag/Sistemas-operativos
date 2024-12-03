@@ -14,16 +14,16 @@ export function childProcesses(){
 
     // Manejando eventos en mi child process
     childProcess.stdout.on('data', (data) => {
-        console.log(✍️ Output: ${data})
+        console.log(`✍️ Output: ${data}`)
     } );
     
     // Manejando errores
     childProcess.stderr.on('data', (data) => {
-        console.log(🚨 Output: ${data})
+        console.log(`🚨 Output: ${data}`)
     });
 
     // Evento close
     childProcess.on('close', (code) => {
-        console.log(➡️ Proceso terminado con el código: ${code})
+        console.log(`➡️ Proceso terminado con el código: ${code}`)
     });
 }

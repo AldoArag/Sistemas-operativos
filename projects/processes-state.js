@@ -1,16 +1,14 @@
-import { fork } from 'child_process'
+export function processState(){
+    console.log("=== 🩺 Estado de procesos 🩺 ===");
 
-export function ipc(){
-    console.log("=== 🗨️  Comunicación entre Procesos 🗨️  ===");
+    // Obteniendo informacion del proceso actual
+    console.log(`📢 ID del proceso: ${process.pid}`);
+    console.log(`📢 Memory Usage: ${JSON.stringify(process.memoryUsage(),null, '\t') }`);
+    console.log(`📢 CPU Time: ${JSON.stringify(process.cpuUsage(), null,'\t')}`);
 
-    // 1. Creando un subproceso de Node
-    const child = fork('./projects/child.js');
-
-    // 2. Registrando eventos
-    child.on('message', (message)=>{
-        console.log(👦 💌  ➡️  🎅: ${message.message});
+    // Eventos del proceso
+    // Evento close
+    process.on('exit', (code) => {
+        console.log(`➡️ Proceso finaliza con el código: ${code}`)
     });
-
-    // Enviando un mensaje al proceso hijo
-    child.send({message: '❄️ Merry Christmas ❄️'});
 }

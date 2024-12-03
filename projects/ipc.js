@@ -8,7 +8,7 @@ export function ipc(){
 
     // 2. Registrando eventos
     child.on('message', (message)=>{
-        console.log(👦 💌  ➡️  🎅: ${message.message});
+        console.log(`👦 💌  ➡️  🎅: ${message.message}`);
     });
 
     // Enviando un mensaje al proceso hijo
